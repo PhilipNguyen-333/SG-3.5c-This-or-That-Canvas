@@ -50,8 +50,10 @@ Known Issues:
         }
 
 		function changeText(){
+/* Commenting out the fixed allergy_count and cold_count
 			var allergy_count = 2;
 			var cold_count = 4;
+*/
 			var allergy_percent = allergy_count/(allergy_count + cold_count)*100;
 			var cold_percent = cold_count/(allergy_count + cold_count)*100;
 			var initialText = document.getElementById("results");
@@ -59,8 +61,10 @@ Known Issues:
 		}
 
 		function drawChart(){
-			var allergy_count = 2;
-			var cold_count = 4;
+/* Commenting out the fixed allergy_count and cold_count
+			var allergy_count = 5;
+			var cold_count = 1;
+*/
 			var canvas = document.getElementById("myCanvas");
             var context = canvas.getContext("2d");
 
@@ -100,6 +104,16 @@ Known Issues:
 			context.fillRect(grid_x, ground - 5*grid_spacing, grid_width, grid_thickness);
 			context.fillRect(grid_x, ground - 6*grid_spacing, grid_width, grid_thickness);
 
+		// adding text boxes next to the grid marks
+			context.font = "11 px Arial";
+			context.fillStyle = "black";
+			context.fillText("16.6%", grid_x - 40, ground - 1*grid_spacing + 5);
+			context.fillText("33.3%", grid_x - 40, ground - 2*grid_spacing + 5);
+			context.fillText("50.0%", grid_x - 40, ground - 3*grid_spacing + 5);
+			context.fillText("66.7%", grid_x - 40, ground - 4*grid_spacing + 5);
+			context.fillText("83.3%", grid_x - 40, ground - 5*grid_spacing + 5);
+			context.fillText("100.0%", grid_x - 40, ground - 6*grid_spacing + 5);
+
         // drawing the x and y axes
             context.beginPath();
             context.moveTo(80, 50);
@@ -123,19 +137,15 @@ Known Issues:
             context.fillText("Probability (%)", 0, 0); // draws centered vertically
             context.restore(); // restore state
 
+		};
 
 
-
-
-
-		}
-
-
-
+/* Commenting out the window.addEventListener function.
 		window.addEventListener('load', function() {
 			changeText();
 			drawChart();
 		});
+*/
 
   </script>
 
@@ -257,7 +267,7 @@ Known Issues:
 	
 	<div id="content" class="w3-container">
 		<p id="results">Press on the button below to see your results!</p>
-		<a onclick="changeText()" class="w3-btn w3-grey w3-round"> Click here for results! </a>
+		<a onclick="changeText(); drawChart();" class="w3-btn w3-grey w3-round"> Click here for results! </a>
         <br>
         <br>
         <canvas id="myCanvas" width=360 height=360 style="border:1px solid #d3d3d3;"></canvas>
