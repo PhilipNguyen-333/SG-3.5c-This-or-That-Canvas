@@ -66,11 +66,30 @@ Known Issues:
 
 		// variables used to make grid marks on the y axis
 			var ground = 310;
-			var h_max = 250
+			var h_max = 250;
             var grid_spacing = h_max/(allergy_count + cold_count);
 			var grid_x = 75;
             var grid_width = 10;
             var grid_thickness = 2;
+
+		// variables used to make the allergy bar
+			var allergy_x = 130;
+			var allergy_ceiling = ground - allergy_count * grid_spacing;
+			var bar_width = 50;
+			var allergy_height = allergy_count * grid_spacing;
+
+		// creating the allergy bar
+			context.fillStyle = "blue";
+			context.fillRect(allergy_x, allergy_ceiling, bar_width, allergy_height);
+
+		// variables used to make the cold bar
+			var cold_x = 235;
+			var cold_ceiling = ground - cold_count * grid_spacing;
+			var cold_height = cold_count * grid_spacing;
+
+		// creating the cold bar
+			context.fillStyle = "red";
+			context.fillRect(cold_x, cold_ceiling, bar_width, cold_height);
 
 		// drawing the grid marks
 			context.fillStyle = "black";
@@ -80,7 +99,6 @@ Known Issues:
 			context.fillRect(grid_x, ground - 4*grid_spacing, grid_width, grid_thickness);
 			context.fillRect(grid_x, ground - 5*grid_spacing, grid_width, grid_thickness);
 			context.fillRect(grid_x, ground - 6*grid_spacing, grid_width, grid_thickness);
-
 
         // drawing the x and y axes
             context.beginPath();
