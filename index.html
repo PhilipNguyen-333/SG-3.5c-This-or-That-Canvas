@@ -64,6 +64,24 @@ Known Issues:
 			var canvas = document.getElementById("myCanvas");
             var context = canvas.getContext("2d");
 
+		// variables used to make grid marks on the y axis
+			var ground = 310;
+			var h_max = 250
+            var grid_spacing = h_max/(allergy_count + cold_count);
+			var grid_x = 75;
+            var grid_width = 10;
+            var grid_thickness = 2;
+
+		// drawing the grid marks
+			context.fillStyle = "black";
+            context.fillRect(grid_x, ground - 1*grid_spacing, grid_width, grid_thickness);
+			context.fillRect(grid_x, ground - 2*grid_spacing, grid_width, grid_thickness);
+			context.fillRect(grid_x, ground - 3*grid_spacing, grid_width, grid_thickness);
+			context.fillRect(grid_x, ground - 4*grid_spacing, grid_width, grid_thickness);
+			context.fillRect(grid_x, ground - 5*grid_spacing, grid_width, grid_thickness);
+			context.fillRect(grid_x, ground - 6*grid_spacing, grid_width, grid_thickness);
+
+
         // drawing the x and y axes
             context.beginPath();
             context.moveTo(80, 50);
@@ -86,7 +104,15 @@ Known Issues:
             context.textAlign = "center";
             context.fillText("Probability (%)", 0, 0); // draws centered vertically
             context.restore(); // restore state
+
+
+
+
+
+
 		}
+
+
 
 		window.addEventListener('load', function() {
 			changeText();
